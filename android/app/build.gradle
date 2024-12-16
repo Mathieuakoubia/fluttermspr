@@ -1,0 +1,40 @@
+plugins {
+    id "com.android.application"  // Plugin pour les applications Android
+    id "kotlin-android"           // Plugin pour le support Kotlin
+    // Le plugin Flutter doit être appliqué après les plugins Android et Kotlin
+    id "dev.flutter.flutter-gradle-plugin"
+}
+
+android {
+    namespace = "com.mspr_repo_new.arcore_flutter_plugin" // Définissez un namespace unique et cohérent
+    compileSdk = flutter.compileSdkVersion               // Utilise la version de compileSdk définie par Flutter
+    ndkVersion = flutter.ndkVersion                      // Définit la version NDK (si nécessaire)
+
+    compileOptions {
+        sourceCompatibility = JavaVersion.VERSION_1_8    // Compatibilité Java 8
+        targetCompatibility = JavaVersion.VERSION_1_8
+    }
+
+    kotlinOptions {
+        jvmTarget = "1.8"                                // Compatibilité JVM 1.8
+    }
+
+    defaultConfig {
+        applicationId = "com.example.mspr_repo_new"      // ID unique de votre application
+        minSdk = flutter.minSdkVersion                   // Min SDK défini par Flutter
+        targetSdk = flutter.targetSdkVersion             // Target SDK défini par Flutter
+        versionCode = flutter.versionCode                // Version code de l'application
+        versionName = flutter.versionName                // Version name de l'application
+    }
+
+    buildTypes {
+        release {
+            // Ajoutez une configuration de signature pour le mode release si nécessaire
+            signingConfig = signingConfigs.debug         // Utilise la signature debug pour tester
+        }
+    }
+}
+
+flutter {
+    source = "../.."                                     // Chemin source Flutter
+}
